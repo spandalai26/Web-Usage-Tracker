@@ -3,13 +3,92 @@
 <head>
   <title>Web Usage Stats</title>
   <style>
-    body { width: 300px; padding: 10px; }
-    .site { margin: 5px 0; }
+    body { 
+      width: 400px; 
+      padding: 10px; 
+      font-family: Arial, sans-serif;
+    }
+    .site { 
+      margin: 8px 0;
+      padding: 5px;
+      border-bottom: 1px solid #eee;
+    }
+    .category-section {
+      margin: 15px 0;
+    }
+    .category-header {
+      font-weight: bold;
+      color: #444;
+      margin: 10px 0;
+    }
+    .time {
+      color: #666;
+      font-size: 0.9em;
+    }
+    .tab-button {
+      padding: 8px 16px;
+      margin-right: 5px;
+      border: none;
+      background: #f0f0f0;
+      cursor: pointer;
+    }
+    .tab-button.active {
+      background: #007bff;
+      color: white;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .category-form {
+      margin: 10px 0;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .category-form input {
+      margin: 5px 0;
+      padding: 4px;
+    }
+    .category-list {
+      margin: 10px 0;
+    }
+    .category-item {
+      padding: 5px;
+      border-bottom: 1px solid #eee;
+    }
+    .delete-btn {
+      color: red;
+      float: right;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <h2>Your Web Usage</h2>
-  <div id="stats"></div>
+  <div class="tabs">
+    <button class="tab-button active" data-tab="stats">Statistics</button>
+    <button class="tab-button" data-tab="categories">Manage Categories</button>
+  </div>
+  
+  <div id="stats" class="tab-content active">
+    <h2>Your Web Usage</h2>
+    <div id="topSites"></div>
+    <h3>By Category</h3>
+    <div id="categoryStats"></div>
+  </div>
+  
+  <div id="categories" class="tab-content">
+    <h2>Manage Categories</h2>
+    <div class="category-form">
+      <input type="text" id="categoryName" placeholder="Category name" /><br>
+      <input type="text" id="domainPatterns" placeholder="Domain patterns (comma-separated)" /><br>
+      <button id="addCategory">Add Category</button>
+    </div>
+    <div id="categoryList" class="category-list"></div>
+  </div>
+  
   <script src="popup.js"></script>
 </body>
 </html>
