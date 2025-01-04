@@ -10,6 +10,7 @@ chrome.storage.local.get(['userCategories'], (result) => {
 
 function getCategory(domain) {
   // Check each category's domain patterns
+  // Users can define the categories
   for (const [category, patterns] of Object.entries(userCategories)) {
     if (patterns.some(pattern => domain.includes(pattern))) {
       return category;
